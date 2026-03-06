@@ -60,20 +60,9 @@ export function SearchInterface({ psychotype, filters, onHotelsFound }: SearchIn
     const textToSend = messageText || input;
     if (!textToSend.trim()) return;
 
-    const claudeApiKey = localStorage.getItem('claudeApiKey');
-    const travelpayoutsToken = localStorage.getItem('travelpayoutsToken');
-
-    console.log('Claude API Key present:', !!claudeApiKey);
-    console.log('Travelpayouts Token present:', !!travelpayoutsToken);
-
-    if (!claudeApiKey) {
-      const errorMessage: Message = {
-        role: 'assistant',
-        content: '⚠️ Claude API ключ не настроен. Пожалуйста, перейдите в Панель агентства и настройте API ключи.',
-      };
-      setMessages((prev) => [...prev, errorMessage]);
-      return;
-    }
+    // Ключи захардкожены — устанавливаются при настройке бота для агентства
+    const claudeApiKey = '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';
+    const travelpayoutsToken = 'dd3c8d1ca5c665fcbe46671b5346ab1d';
 
     const userMessage: Message = { role: 'user', content: textToSend };
     setMessages((prev) => [...prev, userMessage]);
